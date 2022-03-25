@@ -69,8 +69,9 @@ exports.download = async (req, res, next) => {
     const data = await Student.find();
     const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 
+    console.log(__dirname);
     const csvWriter = createCsvWriter({
-      path: '../studentsData.csv',
+      path: `../studentsData.csv`,
 
       header: [
         '_id',
@@ -93,7 +94,7 @@ exports.download = async (req, res, next) => {
   } catch (error) {
     res.status(200).json({
       status: 'error',
-      message: 'Please delete files with similar name',
+      message: error,
     });
   }
 };
