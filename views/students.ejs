@@ -1,0 +1,43 @@
+<h1 class="text-center">All Students</h1>
+<div class="container">
+  <div class="text-end">
+    <a href="/createStudent" class="btn btn-primary">Create Student</a>
+  </div>
+  <% data.forEach((student) => { %>
+
+  <div
+    class="card my-4 p-3"
+    style="border: none; box-shadow: 0 3rem 4rem rgba(0, 0, 0, 0.1)"
+  >
+    <p class="lead">Name : <%= student.name %></p>
+
+    <ul class="list-group px-4">
+      <li class="list-group-item">
+        <span class="badge badge-pill bg-success m-1">ID</span><%= student._id
+        %>
+      </li>
+      <li class="list-group-item">
+        <span class="badge badge-pill bg-primary m-1">College</span><%=
+        student.college %>
+      </li>
+      <li class="list-group-item">
+        <span class="badge badge-pill bg-primary m-1">Placement status</span><%=
+        student.placement_status %>
+      </li>
+      <li class="list-group-item">
+        <span class="badge badge-pill bg-primary m-1">DSA score</span><%=
+        student.dsaScore %>
+      </li>
+      <li class="list-group-item">
+        <span class="badge badge-pill bg-primary m-1">web score</span><%=
+        student.webScore %>
+      </li>
+      <li class="list-group-item">
+        <span class="badge badge-pill bg-primary m-1">reactScore</span><%=
+        student.reactScore %>
+      </li>
+    </ul>
+  </div>
+
+  <% }) %>
+</div>

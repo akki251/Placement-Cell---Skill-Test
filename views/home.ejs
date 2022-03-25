@@ -1,0 +1,13 @@
+<div class="container my-4 text-center">
+  <% if(!employee) {%>
+  <h4>Welcome , Please signup to continue</h4>
+  <a href="/signup" class="btn btn-primary">Signup</a>
+  <% } else {%>
+  <h2>Welcome <%= employee.name %></h2>
+  <div class="buttons-wrapper d-flex gap-4 justify-content-center mt-4">
+    <a href="/allstudents" class="btn btn-primary">All students</a>
+    <a href="/allinterviews" class="btn btn-success">All interviews</a>
+    <a href="/download" class="btn btn-outline-primary">Download CSV</a>
+  </div>
+  <% } %>
+</div>

@@ -1,0 +1,57 @@
+<h1 class="text-center">All Interviews</h1>
+<div class="container">
+  <div class="text-end">
+    <a href="/createInterview" class="btn btn-warning">Create Interview</a>
+  </div>
+  <% data.forEach((interview) => { %>
+
+  <div
+    class="card my-4 p-3"
+    style="border: none; box-shadow: 0 3rem 4rem rgba(0, 0, 0, 0.1)"
+  >
+    <p class="lead">Company Name : <%= interview.companyName %></p>
+
+    <ul class="list-group px-4">
+      <li class="list-group-item">
+        <span class="badge badge-pill bg-success m-1">Date</span><%=
+        interview.readableDate %>
+      </li>
+      <li class="list-group-item d-flex justify-content-between">
+        <div class="status-box align-self-start">
+          <span class="badge badge-pill bg-primary m-1">status</span><%=
+          interview.status %>
+        </div>
+        <form class="form-group form-status">
+          <select name="status" class="mx-4" id="status">
+            <option value="Pass">Pass</option>
+            <option value="Fail">Fail</option>
+            <option value="onHold">onHold</option>
+            <option value="Didn't Attempt">Didn't Attempt</option>
+          </select>
+          <input type="hidden" value="<%= interview._id %>" id="id" />
+          <button type="submit" class="btn btn-success submit">
+            Update Status
+          </button>
+        </form>
+      </li>
+
+      <% if( interview.registeredStudent) {%>
+
+      <ul class="list-group px-4 bg-light">
+        <p class="lead mt-2">Registered Student</p>
+        <li class="list-group-item">
+          <span class="badge badge-pill bg-primary m-1">Name</span><%=
+          interview.registeredStudent.name %>
+        </li>
+        <li class="list-group-item">
+          <span class="badge badge-pill bg-primary m-1">college</span><%=
+          interview.registeredStudent.college %>
+        </li>
+      </ul>
+      <% } %>
+    </ul>
+  </div>
+
+  <% }) %>
+</div>
+<script type="module" src="/js/interview.js"></script>
