@@ -70,11 +70,14 @@ exports.download = async (req, res, next) => {
   try {
     const data = await Student.find();
     const createCsvWriter = require('csv-writer').createObjectCsvWriter;
+    // C:\Users\asus\AppData\Local\Temp
+    // const dir = __dirname;
+    // console.log(`C:\New folder\studentsData.csv` + '👍');
+    // console.log(os.tmpdir());
+    const path = os.tmpdir().split('AppData')[0] + 'Desktop';
 
-    const dir = __dirname;
-    console.log(`${dir}/studentsData.csv` + '👍');
     const csvWriter = createCsvWriter({
-      path: `${dir}/studentsData.csv`,
+      path: `${path}/studentsData.csv`,
 
       header: [
         '_id',
