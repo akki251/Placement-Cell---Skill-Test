@@ -71,7 +71,7 @@ exports.download = async (req, res, next) => {
 
     const dir = __dirname;
     const csvWriter = createCsvWriter({
-      path: `__dirname/studentsData.csv`,
+      path: `${dir}/studentsData.csv`,
 
       header: [
         '_id',
