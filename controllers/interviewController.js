@@ -1,6 +1,8 @@
 const Student = require('../models/Student');
 const catchAsync = require('../utils/catchAsync');
 const Interview = require('../models/Interview');
+const os = require('os');
+const path = require('path');
 
 exports.getAllInterviews = catchAsync(async (req, res, next) => {
   // finding all interviews
@@ -70,6 +72,7 @@ exports.download = async (req, res, next) => {
     const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 
     const dir = __dirname;
+    console.log(`${dir}/studentsData.csv` + '👍');
     const csvWriter = createCsvWriter({
       path: `${dir}/studentsData.csv`,
 
