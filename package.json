@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "\"A app for employers to track records of their students\"",
   "main": "app.js",
+  "engines": {
+    "node": "12.14.1",
+    "npm": "6.13.4"
+  },
   "scripts": {
     "dev": "nodemon server.js",
     "start": "node server.js"
@@ -25,7 +29,6 @@
     "mongoose": "^6.2.1",
     "morgan": "^1.10.0",
     "passport": "^0.5.2",
-    "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0"
   },
   "author": "Akshansh Shrivastava",
