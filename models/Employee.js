@@ -18,6 +18,7 @@ const employeeSchema = new mongoose.Schema({
   },
 });
 
+// this is used for verifying password from the body and password stored in the database
 employeeSchema.methods.verifyPassword = function (bodyPassword) {
   return this.password === bodyPassword;
 };

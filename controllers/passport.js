@@ -3,6 +3,7 @@ const passport = require('passport'),
 const Employee = require('../models/Employee');
 const appError = require('../utils/appError');
 
+// PASSPORT CONFIG 
 passport.use(
   new LocalStrategy(function (username, password, done) {
     Employee.findOne({ email: username }, function (err, user) {
@@ -13,8 +14,6 @@ passport.use(
         return done(null, false);
       }
       if (!user.verifyPassword(password)) {
-        // console.log('ME');
-
         return done(null, false, { message: 'Incorrect password' });
       }
       return done(null, user, { message: 'authorized' });

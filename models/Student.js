@@ -21,6 +21,7 @@ const studentSchema = new mongoose.Schema({
   webScore: Number,
   reactScore: Number,
 
+  // as a single student can give many interviews, hence this array of objects
   interviews: [{ type: mongoose.Schema.ObjectId, ref: 'Interview' }],
 });
 

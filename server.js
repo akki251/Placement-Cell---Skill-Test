@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 
 const Db = process.env.DATABASE_URL;
 
-
+// DATABASE connection string 
 mongoose
   .connect(Db, {
     useNewUrlParser: true,

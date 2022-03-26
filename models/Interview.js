@@ -40,6 +40,7 @@ interviewSchema.pre('find', function (next) {
   next();
 });
 
+// virtual fields are not stored in databse, it is only rendered for output
 interviewSchema.virtual('readableDate').get(function () {
   return this.interviewDate.toDateString();
 });

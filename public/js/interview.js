@@ -2,18 +2,22 @@
 
 import { showAlert } from './alerts.js';
 
+// using event propagation to handle update form button
 document.querySelector('.content').addEventListener('click', async (e) => {
   const target = e.target;
 
   if (target.classList.contains('submit')) {
     e.preventDefault();
+    // selecting form using parent element 
     const form = target.parentElement;
+
 
     const status = form.querySelector('#status').value;
     const id = form.querySelector('#id').value;
 
     target.innerHTML = 'updating...';
 
+    // axios http request 
     try {
       const res = await axios({
         method: 'PATCH',

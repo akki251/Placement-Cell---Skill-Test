@@ -1,8 +1,6 @@
 const Student = require('../models/Student');
 const catchAsync = require('../utils/catchAsync');
 const Interview = require('../models/Interview');
-const os = require('os');
-const path = require('path');
 
 exports.getAllInterviews = catchAsync(async (req, res, next) => {
   // finding all interviews
@@ -66,16 +64,14 @@ exports.updateInterview = catchAsync(async (req, res, next) => {
   });
 });
 
+//  controller for download csv file
 exports.download = async (req, res, next) => {
   try {
     const data = await Student.find();
     const createCsvWriter = require('csv-writer').createObjectCsvWriter;
-    // C:\Users\asus\AppData\Local\Temp
-    // const dir = __dirname;
-    // console.log(`C:\New folder\studentsData.csv` + '👍');
-    // console.log(os.tmpdir());
-    const path = os.tmpdir().split('AppData')[0] + 'Desktop';
 
+
+    // specifying fields for csv 
     const csvWriter = createCsvWriter({
       path: `./studentsData.csv`,
 
@@ -94,9 +90,10 @@ exports.download = async (req, res, next) => {
       })),
     });
 
+    // creating csv File
     await csvWriter.writeRecords(data);
-    req.alert = 'CSV DOWNLOADED';
-    // res.status(200).redirect('/?alert=success');
+
+    //  dialog box for downloading csv file
     res.download('./studentsData.csv');
   } catch (error) {
     res.status(401).json({

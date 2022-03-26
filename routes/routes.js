@@ -39,6 +39,7 @@ router
   .route('/interview')
   .get(interviewController.getAllInterviews)
   .post(interviewController.createInterview);
+
 router.route('/interview/:id').patch(interviewController.updateInterview);
 router.route('/download').get(interviewController.download);
 
@@ -50,20 +51,17 @@ router.route('/download').get(interviewController.download);
 
 // AUTH ROUTES
 
+// frontend middleware
 router.use(viewController.isLoggedIn);
-router.use((req, res, next) => {
-  if (req.query.alert) {
-    res.locals.alert = 'success';
-    console.log(res.locals.alert);
-  }
-  next();
-});
+
 router.route('/').get(viewController.home);
 router.route('/signup').get(viewController.isAgent, viewController.signup);
 router.route('/signin').get(viewController.isAgent, viewController.signin);
 
-// STUDENTS
+// backend middleware
 router.use(authController.protect);
+
+// STUDENTS ROUTE
 router.route('/allStudents').get(viewController.getAllStudents);
 router.route('/createStudent').get(viewController.createStudent);
 

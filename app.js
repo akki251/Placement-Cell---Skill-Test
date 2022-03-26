@@ -1,4 +1,5 @@
 const dotenv = require('dotenv');
+// dotenv config
 dotenv.config({ path: './config.env' });
 const morgan = require('morgan');
 const expressLayouts = require('express-ejs-layouts');
@@ -18,14 +19,21 @@ const express = require('express');
 
 const app = express();
 
+//
+// ────────────────────────────────────────────────────────────────────────── I ──────────
+//   :::::: G L O B A L   M I D D L W A R E S : :  :   :    :     :        :          :
+// ────────────────────────────────────────────────────────────────────────────────────
+//
 app.use((req, res, next) => {
   res.locals.employee = null;
   res.locals.alert = null;
   next();
 });
 
+// cors handling 
 app.use(cors());
 app.options('*', cors());
+
 
 app.use(cookieParser());
 
@@ -33,9 +41,11 @@ app.use(express.static('public'));
 
 app.use(expressLayouts);
 
+//  view engine setup 
 app.set('layout', './layouts/base');
 app.set('view engine', 'ejs');
 
+// cookie and session config 
 app.use(
   session({
     secret: 'keyboard cat',
@@ -51,6 +61,8 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+
+//  for parsing body data 
 app.use(
   express.urlencoded({
     extended: false,
@@ -58,10 +70,13 @@ app.use(
 );
 app.use(express.json());
 
+// for logging request on console
 app.use(morgan('dev'));
 
+//  routes 
 app.use('/', router);
 
+//  global error handler 
 app.use(globalErrorHandler);
 
 module.exports = app;

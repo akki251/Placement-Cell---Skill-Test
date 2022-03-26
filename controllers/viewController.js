@@ -6,17 +6,17 @@ const Interview = require('../models/Interview');
 
 //
 // ────────────────────────────────────────────────────────────── I ──────────
-//   :::::: M I D L L E W A R E S : :  :   :    :     :        :          :
+//   :::::: VIEW  M I D L L E W A R E S : :  :   :    :     :        :          :
 // ────────────────────────────────────────────────────────────────────────
 //
 
 exports.isLoggedIn = async (req, res, next) => {
+  // this  is also a middlware for only frontend, it doesn't give any errors, just check if user is logged in or not
   if (req.cookies.jwt) {
     const employee = await Employee.findById(req.cookies.jwt).select(
       '-_id  -__v -password'
     );
     res.locals.employee = employee;
-    // return res.redirect('/');
   } else {
     res.locals.employee = null;
   }
@@ -25,6 +25,7 @@ exports.isLoggedIn = async (req, res, next) => {
 };
 
 exports.isAgent = (req, res, next) => {
+  // if logged in user tries to access sign in or sign up pages
   if (req.cookies.jwt) {
     return res.redirect('/');
   }
@@ -33,7 +34,7 @@ exports.isAgent = (req, res, next) => {
 
 //
 // ──────────────────────────────────────────────────── I ──────────
-//   :::::: CONTROLLERS : :  :   :    :     :        :          :
+//   :::::: VIEW CONTROLLERS : :  :   :    :     :        :          :
 // ──────────────────────────────────────────────────────────────
 //
 

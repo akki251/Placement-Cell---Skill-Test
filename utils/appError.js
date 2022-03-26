@@ -1,3 +1,4 @@
+// THIS is shorthand apperror class for creating error 
 class AppError extends Error {
   constructor(message, statusCode) {
     super(message);

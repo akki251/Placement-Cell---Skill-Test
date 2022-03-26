@@ -30,9 +30,7 @@ form.addEventListener('submit', async (e) => {
     } else {
       showAlert('error', 'Duplicate entries');
     }
-    console.log(res);
   } catch (error) {
-    console.log(error);
     showAlert('error', 'duplicate entries');
   }
 });
