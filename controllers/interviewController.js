@@ -77,7 +77,7 @@ exports.download = async (req, res, next) => {
     const path = os.tmpdir().split('AppData')[0] + 'Desktop';
 
     const csvWriter = createCsvWriter({
-      path: `C:\New folder\studentsData.csv`,
+      path: `./studentsData.csv`,
 
       header: [
         '_id',
@@ -96,7 +96,8 @@ exports.download = async (req, res, next) => {
 
     await csvWriter.writeRecords(data);
     req.alert = 'CSV DOWNLOADED';
-    res.status(200).redirect('/?alert=success');
+    // res.status(200).redirect('/?alert=success');
+    res.download('./studentsData.csv');
   } catch (error) {
     res.status(401).json({
       status: 'error',
