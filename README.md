@@ -43,4 +43,9 @@ To run this project, you will need to add the following environment variables to
 `DATABASE_URL`
 
 
+## Postman api documentation
+
+[Documentation](https://documenter.getpostman.com/view/14836896/UVyn1e8R)
+
+
 
